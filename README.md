@@ -1,9 +1,10 @@
 # Hi, I'm Shree 👋
 
-Aspiring Data Engineer | Python, SQL, learning Cloud | Building in public
+Python, SQL, learning Cloud | Building in public
 
-🔭 Currently building: ETL pipelines, SQL fundamentals, and daily learning logs
-🎯 Goal: Data Engineering role
+Currently building: ETL pipelines, SQL fundamentals, and daily learning logs
+
+Goal: learning something cool everyday 
 📍 India
 
 ### Currently working on
