@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tic-Tac-Toe — shreeee244
+    <h4> Coffee Break </h4>
+    
+</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --line: #30363d;
+    --green: #39d353;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+  h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  h1 span { color: var(--green); }
+  p.status {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+    min-height: 1.2em;
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 72px);
+    grid-template-rows: repeat(3, 72px);
+    gap: 6px;
+    background: var(--line);
+    padding: 6px;
+    border-radius: 6px;
+  }
+  .cell {
+    background: var(--panel);
+    border: none;
+    border-radius: 4px;
+    font-size: 2rem;
+    font-family: inherit;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .cell:hover:not(:disabled) {
+    background: #1c2128;
+  }
+  .cell.x { color: #58a6ff; }
+  .cell.o { color: var(--green); }
+  .cell:disabled { cursor: default; }
+  button.reset {
+    margin-top: 22px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+  button.reset:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+  a.back {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+  a.back:hover { color: var(--green); }
+</style>
+</head>
+<body>
+  <h1>tic-tac-toe <span>//</span> coffee break</h1>
+  <p class="status" id="status">You are X — your move</p>
+  <div class="board" id="board"></div>
+  <button class="reset" id="reset">restart</button>
+  <a class="back" href="https://github.com/shreeee244/shreeee244">← back to profile</a>
+ 
+<script>
+  const boardEl = document.getElementById('board');
+  const statusEl = document.getElementById('status');
+  const resetBtn = document.getElementById('reset');
+ 
+  let cells, current, over;
+ 
+  const WINS = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+ 
+  function init() {
+    cells = Array(9).fill(null);
+    current = 'X';
+    over = false;
+    statusEl.textContent = 'You are X — your move';
+    render();
+  }
+ 
+  function render() {
+    boardEl.innerHTML = '';
+    cells.forEach((val, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'cell' + (val ? ' ' + val.toLowerCase() : '');
+      btn.textContent = val || '';
+      btn.disabled = !!val || over;
+      btn.addEventListener('click', () => play(i));
+      boardEl.appendChild(btn);
+    });
+  }
+ 
+  function play(i) {
+    if (cells[i] || over) return;
+    cells[i] = current;
+    const winner = checkWinner();
+    if (winner) {
+      over = true;
+      statusEl.textContent = winner === 'X' ? 'You win 🎉' : 'CPU wins — rematch?';
+      render();
+      return;
+    }
+    if (cells.every(c => c)) {
+      over = true;
+      statusEl.textContent = "It's a draw";
+      render();
+      return;
+    }
+    current = current === 'X' ? 'O' : 'X';
+    render();
+    if (current === 'O' && !over) {
+      statusEl.textContent = 'CPU is thinking…';
+      setTimeout(cpuMove, 350);
+    }
+  }
+ 
+  function cpuMove() {
+    if (over) return;
+    // try to win, then block, then center, then random
+    const empty = cells.map((c, i) => c ? null : i).filter(i => i !== null);
+ 
+    const tryFind = (player) => {
+      for (const line of WINS) {
+        const vals = line.map(i => cells[i]);
+        if (vals.filter(v => v === player).length === 2 && vals.includes(null)) {
+          return line[vals.indexOf(null)];
+        }
+      }
+      return null;
+    };
+ 
+    let move = tryFind('O') ?? tryFind('X');
+    if (move === null) {
+      if (empty.includes(4)) move = 4;
+      else move = empty[Math.floor(Math.random() * empty.length)];
+    }
+ 
+    cells[move] = 'O';
+    const winner = checkWinner();
+    if (winner) {
+      over = true;
+      statusEl.textContent = 'CPU wins — rematch?';
+    } else if (cells.every(c => c)) {
+      over = true;
+      statusEl.textContent = "It's a draw";
+    } else {
+      current = 'X';
+      statusEl.textContent = 'You are X — your move';
+    }
+    render();
+  }
+ 
+  function checkWinner() {
+    for (const [a,b,c] of WINS) {
+      if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) return cells[a];
+    }
+    return null;
+  }
+ 
+  resetBtn.addEventListener('click', init);
+  init();
+</script>
+</body>
