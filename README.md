@@ -23,4 +23,4 @@ Python · SQL · PostgreSQL · Pandas · Git · AWS (learning)
 
 
 
-📈 Day 21 of my data engineering journey — one commit at a time.
+
