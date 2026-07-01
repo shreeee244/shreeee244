@@ -1,4 +1,4 @@
-# Hi, I'm Shree 👋
+# Hi, I'm Shrustie patil 👋
 
 Python, SQL, learning Cloud | Building in public
 
