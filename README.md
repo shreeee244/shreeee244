@@ -19,8 +19,7 @@ Stack
 Python · SQL · PostgreSQL · Pandas · Git · AWS (learning)
 
 
-🎮 Play tic-tac-toe vs. the CPU →
-
+🎮 [Play tic-tac-toe vs. the CPU →](https://shreeee244.github.io/shreeee244/tic-tac-toe.html)
 
 
 
