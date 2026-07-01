@@ -4,8 +4,9 @@ Python, SQL, learning Cloud | Building in public
 
 Currently building: ETL pipelines, SQL fundamentals, and daily learning logs
 
-Goal: learning something cool everyday 
-📍 India
+Goal: learning something cool everyday
+
+📍 India - Bengaluru,Karnataka
 
 ### Currently working on
 - 🛠️ [de-python-foundations](#) — Python scripts with error handling & logging
