@@ -22,3 +22,4 @@ Python · SQL · PostgreSQL · Pandas · Git · AWS (learning)
 
 🎮 *Click the board above to play against the CPU*
 
+you got thissssss
