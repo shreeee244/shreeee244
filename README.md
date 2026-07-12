@@ -21,5 +21,3 @@ Python · SQL · PostgreSQL · Pandas · Git · AWS (learning)
 [![Play tic-tac-toe](https://raw.githubusercontent.com/shreeee244/shreeee244/main/tic-tac-toe-preview.png)](https://shreeee244.github.io/shreeee244/tic-tac-toe.html)
 
 🎮 *Click the board above to play against the CPU*
-
-you got thissssss
