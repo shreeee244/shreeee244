@@ -1,6 +1,6 @@
 # Hi, I'm Shrustie patil 👋
 
-Python, SQL, learning Cloud | Building in public
+Python, SQL, learning Cloud | Building in public 
 
 Currently building: ETL pipelines, SQL fundamentals, and daily learning logs
 
