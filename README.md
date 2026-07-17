@@ -7,7 +7,7 @@ Currently building: ETL pipelines, SQL fundamentals, and daily learning logs
 Goal: learning something cool everyday
 
 📍 India - Bengaluru,Karnataka
-
+ 
 ### Currently working on
 - 🛠️ [de-python-foundations](#) — Python scripts with error handling & logging
 - 🗄️ [de-sql-practice](#) — SQL problems: joins, window functions, CTEs
