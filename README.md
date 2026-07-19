@@ -12,7 +12,7 @@ Goal: learning something cool everyday
 - 🛠️ [de-python-foundations](#) — Python scripts with error handling & logging
 - 🗄️ [de-sql-practice](#) — SQL problems: joins, window functions, CTEs
 - 📓 [de-learning-journal](#) — Daily notes on what I'm learning
-
+  
 ### Stack
 Python · SQL · PostgreSQL · Pandas · Git · AWS (learning)
 
